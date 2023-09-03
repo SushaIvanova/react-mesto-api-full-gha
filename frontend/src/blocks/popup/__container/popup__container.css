@@ -1,0 +1,15 @@
+.popup__container {
+  position: relative;
+  box-sizing: border-box;
+  align-self: center;
+  margin: 0 auto;
+  min-width: 430px;
+  min-height: 181px;
+}
+
+@media (max-width: 470px) {
+  .popup__container {
+    margin: 0 19px;
+    row-gap: 16px;
+  }
+}
