@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.112.249
+IP-адрес IP 158.160.112.249
 
 Frontend https://api.yp23.mesto.nomoredomainsicu.ru/
 
