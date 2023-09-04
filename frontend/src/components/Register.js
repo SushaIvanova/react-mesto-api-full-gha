@@ -19,7 +19,7 @@ function Register({onRegister, onChange, formValue}) {
       </Form>
       <div className="sign-in">
         <p className="sign-in__question">Уже зарегистрированы?</p>
-        <Link to="/sign-in" className="sign-in__link">Войти</Link>
+        <Link to="/signin" className="sign-in__link">Войти</Link>
       </div>
     </>
    
