@@ -52,7 +52,7 @@ function App() {
     .then((res) => {
       setIsInfoTooltipPopupOpen(true);
       setIsSignUpSuccess(true);
-      navigate('/sign-in', {replace: true});
+      navigate('/signin', {replace: true});
     })
     .catch(err => {
       setIsInfoTooltipPopupOpen(true);
@@ -99,7 +99,7 @@ function App() {
     localStorage.removeItem('token');
     setEmail(null);
     setLoggedIn(false);
-    navigate('sign-in', {replace: true});
+    navigate('signin', {replace: true});
   }
 
   const[isEditProfilePopupLoading, setIsEditProfilePopupLoading] = React.useState(false);
@@ -245,8 +245,8 @@ function App() {
               loggedIn={loggedIn}
               />} 
             />
-            <Route path="/sign-up" element={<Register onRegister={handleRegister} onChange={handleChange} formValue={formValue} />} />
-            <Route path="/sign-in" element={<Login onLogin={handleLogin} onChange={handleChange} formValue={formValue}/>} />
+            <Route path="/signup" element={<Register onRegister={handleRegister} onChange={handleChange} formValue={formValue} />} />
+            <Route path="/signin" element={<Login onLogin={handleLogin} onChange={handleChange} formValue={formValue}/>} />
           </Routes>
           
           <Footer />
