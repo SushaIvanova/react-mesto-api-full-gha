@@ -39,6 +39,7 @@ function App() {
 
   const handleTokenCheck = () => {
     const token = localStorage.getItem('token');
+    console.log(token);
     if (token){
       auth.getContent(token)
       .then((res) => {
