@@ -85,7 +85,7 @@ function App() {
     if (token){
       auth.getContent(token)
       .then((res) => {
-        setEmail(res.email);
+        // setEmail(res.data.email);
         setLoggedIn(true);
         navigate('/', {replace: true});
       })
@@ -99,7 +99,7 @@ function App() {
     localStorage.removeItem('token');
     setEmail(null);
     setLoggedIn(false);
-    navigate('signin', {replace: true});
+    navigate('/signin', {replace: true});
   }
 
   const[isEditProfilePopupLoading, setIsEditProfilePopupLoading] = React.useState(false);

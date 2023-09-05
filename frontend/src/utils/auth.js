@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.yp23.mesto.nomoredomainsicu.ru';
+export const BASE_URL = 'http://localhost:3000';
 
 export function getResponseData(res) {
   if (!res.ok) {

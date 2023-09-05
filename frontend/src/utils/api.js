@@ -105,7 +105,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.yp23.mesto.nomoredomainsicu.ru',
+  baseUrl: 'http://localhost:3000',
 }); 
 
 export {api};
