@@ -19,18 +19,38 @@ import ProtectedRoute from './ProtectedRoute';
 function App() {
 
   const navigate = useNavigate();
-
   const[loggedIn, setLoggedIn] = React.useState(false);
-
   const[email, setEmail] = React.useState(null);
-
   const[isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = React.useState(false);
-
   const[isSignUpSuccess, setIsSignUpSuccess] = React.useState(false);
+  const[isEditProfilePopupLoading, setIsEditProfilePopupLoading] = React.useState(false);
+  const[isAddPlacePopupLoading, setIsAddPlacePopupLoading] = React.useState(false);
+  const[isEditAvatarPopupLoading, setIsEditAvatarPopupLoading] = React.useState(false);
+  const[isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const[isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const[isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const[selectedCard, setSelectedCard] = React.useState(null);
+  const[currentUser, setCurrentUser] = React.useState({});
+  const[cards, setCards] = React.useState([]);
 
   useEffect(() => {
     handleTokenCheck();
-  }, [])
+  });
+
+  const handleTokenCheck = () => {
+    const token = localStorage.getItem('token');
+    if (token){
+      auth.getContent(token)
+      .then((res) => {
+        setEmail(res.email);
+        setLoggedIn(true);
+        navigate('/', {replace: true});
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    } 
+  }
 
   const [formValue, setFormValue] = React.useState({
     password: '',
@@ -80,21 +100,6 @@ function App() {
     }); 
   }
   
-  const handleTokenCheck = () => {
-    const token = localStorage.getItem('token');
-    if (token){
-      auth.getContent(token)
-      .then((res) => {
-        // setEmail(res.data.email);
-        setLoggedIn(true);
-        navigate('/', {replace: true});
-      })
-      .catch(err => {
-        console.log(err);
-      }); 
-    }
-  }
-
   const handleSignOut = () => {
     localStorage.removeItem('token');
     setEmail(null);
@@ -102,31 +107,17 @@ function App() {
     navigate('/signin', {replace: true});
   }
 
-  const[isEditProfilePopupLoading, setIsEditProfilePopupLoading] = React.useState(false);
-  const[isAddPlacePopupLoading, setIsAddPlacePopupLoading] = React.useState(false);
-  const[isEditAvatarPopupLoading, setIsEditAvatarPopupLoading] = React.useState(false);
-
-  const[isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-
-  const[isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-
-  const[isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-
-  const[selectedCard, setSelectedCard] = React.useState(null);
-
-  const[currentUser, setCurrentUser] = React.useState({});
-
-  const[cards, setCards] =React.useState([]);
-
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
+    if(loggedIn) {
+      const token = localStorage.getItem('token');
     Promise.all([api.getUserInfo(token), api.getCards(token)])
       .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
         setCards(cards);
       })
       .catch((error) => console.log(`Ошибка ${error}`));
-  }, []);
+    }
+  }, [loggedIn]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(item => item === currentUser._id);
