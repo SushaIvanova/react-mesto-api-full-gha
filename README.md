@@ -11,6 +11,6 @@
 
 IP 158.160.112.249
 
-Frontend https://api.yp23.mesto.nomoredomainsicu.ru/
+Frontend https://api.yp23.mesto.nomoredomainsicu.ru
 
-Backend https://yp23.mesto.nomoredomainsicu.ru/
+Backend https://yp23.mesto.nomoredomainsicu.ru
