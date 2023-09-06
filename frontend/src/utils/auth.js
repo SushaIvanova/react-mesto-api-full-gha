@@ -33,8 +33,7 @@ export const authorize = (password, email) => {
       email: email, 
     })
   })
-  .then(getResponseData)
-  
+  .then(getResponseData)  
 };
 
 export const getContent = (token) => {
