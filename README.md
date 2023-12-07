@@ -18,7 +18,7 @@ Backend https://api.yp23.mesto.nomoredomainsicu.ru -->
 <h1 align="center">Mesto</h1>
 
 <p align="center">
-  <img src="/frontend/src/images/logo.svg" style="background-color: black; border: black solid 10px"/>
+  <img src="/frontend/src/images/readme-logo.png" style="background-color: black; border: black solid 10px"/>
 </p>
 
 
